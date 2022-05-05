@@ -129,7 +129,7 @@ function selectedTown2() {
 selectedBtn2.addEventListener('click', selectedTown2);
 
 function resetReg2() {
-    localStorage['regNumbers'] = "";
+    localStorage['regNumbers2'] = "";
     //remove all current plates
     const elementList = document.querySelectorAll(".plate2")
     for (let i = 0; i < elementList.length; i++) {
