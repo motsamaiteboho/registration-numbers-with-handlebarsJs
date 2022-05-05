@@ -41,9 +41,11 @@ function addElement() {
         var format3 = "^[A-Z,a-z]{2} [0-9]{3} [0-9]{3}$";
         if (regNumber.value.match(format1) || regNumber.value.match(format2) || regNumber.value.match(format3)) {
             var reg = regNumber.value.toUpperCase();
-
-            if (!regNumbers.AllRegNumbers().includes(reg))
+            const currentDiv = document.querySelector(".plate11");
+            if (!regNumbers.AllRegNumbers().includes(reg)){
                 createDivElment(reg);
+                currentDiv.innerHTML = "";
+            }
             else {
                 setTimeout(function () {
                     errorMessageElem.innerHTML = "...";

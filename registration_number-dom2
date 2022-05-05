@@ -62,6 +62,8 @@ function addElement2() {
                 // compile the template
                 var userDataHTML = userTemplate(userData);
                 userDataElem.innerHTML = userDataHTML;
+                const currentDiv2 = document.querySelector(".plate12");
+                currentDiv2.innerHTML = "";
             }
             else {
                 setTimeout(function () {
