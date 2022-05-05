@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="css/registration_number.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="template">
+            <div class="regnumber">
+                <h2>REGISTRATION NUMBERS 1 </h2>
+                <div class="regTxtBx">
+                    <label for="fReg">Registration number </label>
+                    <input type="text" name="" value="" placeholder="enter registration number(e.g CA 123456, CK 123-123, CL 123 123, CL 222222)" class="fReg">
+                </div>
+                <span class="errorMessage">...</span>
+                <div class="buttons">
+                    <button class="button-primary AddBtn" type="button" name="button">Add</button>
+                    <button class="button-primary ResetBtn" type="button" name="button">Reset</button>
+                </div>
+                <div class="town">
+                    <label for="towns">Town: </label>
+                    <select name="towns" class="townsname">
+                        <option value="selecttown">Select Town</option>
+                        <option value="capetown">Cape Town</option>
+                        <option value="paarl">Paarl</option>
+                        <option value="george">George</option>
+                        <option value="stellenbosch">Stellenbosch</option>
+                    </select>
+                </div>
+            </div>
+            <div class="plates">
+                <div class="plate1">
+                    <span class="plate11"></span>
+                </div>
+            </div>
+        </div>
+        <div class="template">
+            <div class="regnumber">
+                <h2>REGISTRATION NUMBERS 2</h2>
+                <div class="regTxtBx">
+                    <label for="fReg2">Registration number </label>
+                    <input type="text" name="" value="" placeholder="enter registration number(e.g CA 123456, CK 123-123, CL 123 123, CL 222222)" class="fReg2">
+                </div>
+                <span class="errorMessage2">...</span>
+                <div class="buttons">
+                    <button class="button-primary AddBtn2" type="button" name="button">Add</button>
+                    <button class="button-primary ResetBtn2" type="button" name="button">Reset</button>
+                </div>
+                <div class="town">
+                    <label for="towns">Town: </label>
+                    <select name="towns" class="townsname2">
+                        <option value="selecttown">Select Town</option>
+                        <option value="capetown">Cape Town</option>
+                        <option value="paarl">Paarl</option>
+                        <option value="george">George</option>
+                        <option value="stellenbosch">Stellenbosch</option>
+                    </select>
+                </div>
+               
+            </div>
+            <div class="plates">
+                <script type="text/x-template" class="userTemplate">
+                    {{#each users}}
+                        <div class = "plate2" >{{regNumber}}</div>
+                    {{/each}}
+                </script>
+                <div class="userData">
+                </div>
+                <div class="plate1">
+                    <span class="plate12"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+  
+    <script src="registration_number.js" charset="utf-8"></script>
+    <script src="registration_number-dom.js" charset="utf-8"></script>
+    <script src="registration_number-dom2" charset="utf-8"></script>
+</body>
+
+</html>

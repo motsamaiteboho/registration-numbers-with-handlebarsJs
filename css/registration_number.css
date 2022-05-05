@@ -1,0 +1,98 @@
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2em;
+    background-color: #e9d8a6;
+}
+.container {
+    display: flex;
+}
+.container div {
+    flex: 1;
+}
+
+.template {
+    display: flex;
+    flex-flow: column wrap;
+    padding-left: 1em;
+}
+.template > * {
+    padding: 10px;
+    flex: 1 100%;
+}
+
+input[type=text]{ 
+	width: 44%;
+	display: inline-block;
+	padding: 12px 20px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	background-color: #e9d8a6;
+}
+.regnumber {
+    text-align: center;
+    margin-bottom: 2em;
+    background-color: rgb(0, 140, 255);
+}
+.regnumber button {
+	background-color : aqua;
+	padding: 5px;
+	font-size: 15px;
+	width: 8em;
+}
+.buttons {
+    padding: 1em;
+    padding-left: 34%;
+    background-color: chocolate;
+}
+
+select {
+    font-size: 1em;
+    margin-bottom: 1em;
+    background-color: coral;
+}
+
+.plates div{
+    float: left;
+}
+.plate {
+    border-radius: 0.5em;
+    border: 2px solid #000000;
+    padding: 5px;
+    background-color: silver;
+    width: 5.2em;
+    height: 1.2em;
+    margin-left: 1em;
+    margin-top: 0.5em;
+    text-align: center;
+}
+.plate2 {
+    border-radius: 0.5em;
+    border: 2px solid #000000;
+    padding: 5px;
+    background-color: silver;
+    width: 5.2em;
+    height: 1.2em;
+    margin-left: 1em;
+    margin-top: 0.5em;
+    text-align: center;
+}
+.errorMessage {
+    color: red;
+}
+.errorMessage2 {
+    color: red;
+}
+@media (max-width: 750px){
+    .buttons{
+        padding-left: 5%;
+    }
+    input[type=text]{ 
+		width: 90%;
+		display: block;
+	}
+    .regTxtBx {
+        padding-left:10%;
+    }
+}
+

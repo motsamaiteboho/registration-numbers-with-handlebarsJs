@@ -1,0 +1,140 @@
+//SECOND SECTION 
+
+// get a reference to the textbox where the name is to be entered
+const regNumber2 = document.querySelector(".fReg2");
+//get a reference to the add button
+const addBtn2 = document.querySelector(".AddBtn2");
+const resetBtn2 = document.querySelector(".ResetBtn2");
+const errorMessageElem2 = document.querySelector(".errorMessage2");
+
+
+//variables
+var regNumbers2 = RegstrationNumbers();
+
+if (localStorage['regNumbers2']) {
+    var theregNumbers = JSON.parse(localStorage.getItem('regNumbers2'))
+    for (var i = 0; i < theregNumbers.length; i++) {
+        regNumbers2.addRegistration(theregNumbers[i]);
+    }
+    var allRegNumbers = regNumbers2.AllRegNumbers();
+    var regData = [];
+    for (var i = 0; i < allRegNumbers.length; i++) {
+        regData.push({ regNumber: allRegNumbers[i] })
+    }
+    // get a reference to the template script tag
+    var templateSource = document.querySelector(".userTemplate").innerHTML;
+
+    // compile the template
+    var userTemplate = Handlebars.compile(templateSource);
+    // get a reference to tableBody where users is to be displayed
+    var userDataElem = document.querySelector(".userData");
+    var userData = {
+        users: regData
+    };
+    // compile the template
+    var userDataHTML = userTemplate(userData);
+    userDataElem.innerHTML = userDataHTML;
+}
+function addElement2() {
+    if (regNumber2.value !== "") {
+        var format1 = "^[A-Z,a-z]{2} [0-9]{6}$";
+        var format2 = "^[A-Z,a-z]{2} [0-9]{3}-[0-9]{3}$";
+        var format3 = "^[A-Z,a-z]{2} [0-9]{3} [0-9]{3}$";
+        if (regNumber2.value.match(format1) || regNumber2.value.match(format2) || regNumber2.value.match(format3)) {
+            var reg = regNumber2.value.toUpperCase();
+            var allRegNumbers = regNumbers2.AllRegNumbers();
+            var regData = [];
+            if (!allRegNumbers.includes(reg)) {
+                regNumbers2.addRegistration(reg);
+                for (let i = 0; i < allRegNumbers.length; i++) {
+                    regData.push({ regNumber: allRegNumbers[i] })
+                }
+                // get a reference to the template script tag
+                var templateSource = document.querySelector(".userTemplate").innerHTML;
+
+                // compile the template
+                var userTemplate = Handlebars.compile(templateSource);
+                // get a reference to tableBody where users is to be displayed
+                var userDataElem = document.querySelector(".userData");
+                var userData = {
+                    users: regData
+                };
+                // compile the template
+                var userDataHTML = userTemplate(userData);
+                userDataElem.innerHTML = userDataHTML;
+            }
+            else {
+                setTimeout(function () {
+                    errorMessageElem2.innerHTML = "...";
+                }, 3000);
+
+                errorMessageElem2.innerHTML = "Please, registration already exits";
+            }
+
+
+            localStorage.setItem('regNumbers2', JSON.stringify(regNumbers2.AllRegNumbers()));
+
+        }
+        else {
+            setTimeout(function () {
+                errorMessageElem2.innerHTML = "...";
+            }, 3000);
+            errorMessageElem2.innerHTML = "Please, enter a valid registration format ";
+        }
+        regNumber2.value = "";
+    }
+    else {
+        setTimeout(function () {
+            errorMessageElem2.innerHTML = "...";
+        }, 3000);
+        errorMessageElem2.innerHTML = "Please, enter a valid registration number";
+    }
+}
+addBtn2.addEventListener('click', addElement2);
+
+//get reference to the dropdown manue
+var selectedBtn2 = document.querySelector(".townsname2");
+function selectedTown2() {
+    //remove all current plates
+    const elementList = document.querySelectorAll(".plate2")
+    for (let i = 0; i < elementList.length; i++) {
+        elementList[i].remove();
+    }
+    const currentDiv2 = document.querySelector(".plate12");
+    var regData = [];
+    var regbyTown = regNumbers2.filterByTown(selectedBtn2.value);
+    if (regbyTown.length > 0) {
+        for (let i = 0; i < regbyTown.length; i++) {
+            regData.push({ regNumber: regbyTown[i] })
+        }
+        // get a reference to the template script tag
+        var templateSource = document.querySelector(".userTemplate").innerHTML;
+
+        // compile the template
+        var userTemplate = Handlebars.compile(templateSource);
+        // get a reference to tableBody where users is to be displayed
+        var userDataElem = document.querySelector(".userData");
+        var userData = {
+            users: regData
+        };
+        // compile the template
+        var userDataHTML = userTemplate(userData);
+        userDataElem.innerHTML = userDataHTML;
+        currentDiv2.innerHTML = "";
+    }
+    else {
+        currentDiv2.innerHTML = "No registration numbers available";
+    }
+}
+selectedBtn2.addEventListener('click', selectedTown2);
+
+function resetReg2() {
+    localStorage['regNumbers'] = "";
+    //remove all current plates
+    const elementList = document.querySelectorAll(".plate")
+    for (let i = 0; i < elementList.length; i++) {
+        elementList[i].remove();
+    }
+    regNumbers2.resetReg();
+}
+resetBtn2.addEventListener('click', resetReg2);
